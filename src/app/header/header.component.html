@@ -6,10 +6,10 @@
         </a>
     </div>
     <div class="navbar-end">
-        <div class="navbar-item">
+        <div *ngIf="util.user.type === 'ADMIN'" class="navbar-item">
             <a class="item-menu" [routerLink]="['admin/users']" routerLinkActive="link-activate">Usuarios</a>
         </div>
-        <div class="navbar-item">
+        <div *ngIf="util.user.type === 'ADMIN'" class="navbar-item">
             <a class="item-menu" [routerLink]="['admin/books']" routerLinkActive="link-activate">Libros</a>
         </div>
         <div class="navbar-item">

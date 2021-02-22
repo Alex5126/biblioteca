@@ -41,8 +41,6 @@ export class UsersComponent implements OnInit {
 
   clear(){
     this.formUser.reset();
-    console.log(this.formUser.value);
-    
   }
 
   sendData(){
@@ -72,6 +70,7 @@ export class UsersComponent implements OnInit {
     this.userService.addUser(this.formUser.value).subscribe(data =>{
       console.log(data);
       alert('usuario agregado correctamente');
+      this.clear();
       this.getUsers();
     }, error => {
       console.log(error);

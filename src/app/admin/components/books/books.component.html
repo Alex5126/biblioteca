@@ -1,1 +1,94 @@
-<p>books works!</p>
+<div class="card-table">
+    <div class="card card-menu">
+        <div *ngIf="!load" class="card-content">
+            <button class="button is-success" (click)="editBook = !editBook">Agregar Libro</button>
+            <form *ngIf="editBook" [formGroup]="formBook">
+                <div class="columns">
+                    <div class="column is-one-quarter">
+                        <img [src]="formBook.controls['image'].value" alt="book" width="200px">
+                    </div>
+                    <div class="column">
+                        <div class="column">
+                            <label for="url">Url Imagen</label>
+                            <input id="url" class="input" type="text" formControlName="image" placeholder="https://image.png">
+                        </div>
+                        <div class="column">
+                            <label for="code">Codigo</label>
+                            <input id="code" class="input" type="text" formControlName="code" placeholder="0123546">
+                        </div>
+                        <div class="column">
+                            <label for="author">Autor</label>
+                            <input id="author" class="input" type="text" formControlName="author"
+                                placeholder="Autor del Libro">
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="column">
+                            <label for="tit">Titulo</label>
+                            <input id="tit" class="input" type="text" formControlName="title" placeholder="Titulo del libro">
+                        </div>
+                        <div class="column">
+                            <label for="edit">Edición</label>
+                            <input id="edit" class="input" type="text" formControlName="edition"
+                                placeholder="1ra 2da ...">
+                        </div>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <label for="email">Descripción</label>
+                        <textarea class="textarea" placeholder="Descripcion" formControlName="description"></textarea>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="button is-success" (click)="sendData()">Aceptar</button>
+                    <button class="button is-info" (click)="clear()">Limpiar</button>
+                    <button class="button is-primary" (click)="editBook = false">Cerrar</button>
+                </div>
+            </form>
+            <br><br>
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th style="width: 11%;">Imagen</th>
+                        <th>Codigo</th>
+                        <th>Titulo</th>
+                        <th>Autor</th>
+                        <th>Edición</th>
+                        <th style="width: 40%;">Descripción</th>
+                        <th>Opcs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let book of books">
+                        <td><img [src]="book.image" alt="img book"></td>
+                        <td>{{book.code}}</td>
+                        <td>{{book.title}}</td>
+                        <td>{{book.author}}</td>
+                        <td>{{book.edition}}</td>
+                        <td>{{book.description}}</td>
+                        <td>
+                            <span>
+                                <img class="icon" src="assets/icons/edit.png" alt="edit" (click)="edit(book)">
+                                <img class="icon" src="assets/icons/delete.png" alt="delete"
+                                    (click)="deleteBook(book.id)" />
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="load" style="text-align: center; margin-top: 10%;">
+            <div class="lds-roller">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
