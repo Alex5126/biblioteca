@@ -1,10 +1,14 @@
-export interface User{
-    user:UserData;
+export interface UserToken{
+    user:User;
     token:string;
 }
 
-export interface UserData{
-    id:number;
-    name:string;
-    type:string;
+export interface User{
+    id?: number;
+    name: string;
+    last_name: string;
+    email: string;
+    password?: string;
+    type: string;
+    address: string;
 }

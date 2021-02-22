@@ -8,10 +8,10 @@ import { JwtModule } from '@auth0/angular-jwt'
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { JwtInterceptor } from './interceptor/token-interceptor';
-import { User } from './models/user';
+import { UserToken } from './models/user';
 
 export function jwtTokenGetter(){
-  const user:User = JSON.parse(localStorage.getItem('user')||'');
+  const user:UserToken = JSON.parse(localStorage.getItem('user')||'');
   return  user.token;
 }
 

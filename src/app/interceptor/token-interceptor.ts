@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
+import { UserToken } from '../models/user';
 
 
 @Injectable()
@@ -12,7 +12,7 @@ export class JwtInterceptor implements HttpInterceptor {
         // add authorization header with jwt token if available
         
         if (localStorage.getItem('user') !== null) {
-            let usr:User = JSON.parse(localStorage.getItem('user')||'');
+            let usr:UserToken = JSON.parse(localStorage.getItem('user')||'');
             request = request.clone({
                 setHeaders: {
                     'Authorization': 'Bearer '+usr.token

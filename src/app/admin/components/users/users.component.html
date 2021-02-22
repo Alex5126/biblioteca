@@ -1,0 +1,92 @@
+<div class="card-table">
+    <div class="card card-menu">
+        <div *ngIf="!load" class="card-content">
+            <button class="button is-success" (click)="editUser = !editUser">Agregar Usuario</button>
+            <form *ngIf="editUser" [formGroup]="formUser">
+                <div class="columns">
+                    <div class="column">
+                        <label for="name">Nombre</label>
+                        <input id="name" class="input" type="text" formControlName="name" placeholder="Nombre(s)">
+                    </div>
+                    <div class="column">
+                        <label for="lastName">Apellidos</label>
+                        <input id="lastName" class="input" type="text" formControlName="last_name"
+                            placeholder="Ap Materno Ap Paterno">
+                    </div>
+                    <div class="column">
+                        <label for="email">email</label>
+                        <input id="email" class="input" type="email" formControlName="email"
+                            placeholder="example@domain.com">
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <label for="email">Dirección</label>
+                        <textarea class="textarea" placeholder="Normal textarea" formControlName="address"></textarea>
+                    </div>
+                    <div class="column">
+                        <label for="email">Tipo</label><br>
+                        <div class="select">
+                            <select formControlName="type">
+                                <option value="ADMIN">ADMINISTRADOR</option>
+                                <option value="LIBRARIAN">BIBLIOTECARIO</option>
+                                <option value="LECTOR">LECTOR</option>
+                            </select>
+                        </div>
+                        <br>
+                        <label for="pws" class="label-login">Password</label>
+                        <input id="pws" class="input" type="password" formControlName="password" placeholder="">
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="button is-success" (click)="sendData()">Aceptar</button>
+                    <button class="button is-info" (click)="clear()">Limpiar</button>
+                    <button class="button is-primary" (click)="editUser = false">Cerrar</button>
+                </div>
+            </form>
+            <br><br>
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Email</th>
+                        <th>Dirección</th>
+                        <th>Tipo</th>
+                        <th>Opcs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.last_name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.address}}</td>
+                        <td>{{user.type}}</td>
+                        <td>
+                            <span>
+                                <img class="icon" src="assets/icons/edit.png" alt="edit" (click)="edit(user)">
+                                <img class="icon" src="assets/icons/delete.png" alt="delete"
+                                    (click)="deleteUser(user.id)" />
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="load" style="text-align: center; margin-top: 10%;">
+            <div class="lds-roller">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
