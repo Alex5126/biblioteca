@@ -1,21 +1,38 @@
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
+import { JwtModule } from '@auth0/angular-jwt'
+
 import { AppComponent } from './app.component';
-import { MenuComponent } from './menu/components/menu/menu.component';
+import { HeaderComponent } from './header/header.component';
+import { JwtInterceptor } from './interceptor/token-interceptor';
+import { User } from './models/user';
+
+export function jwtTokenGetter(){
+  const user:User = JSON.parse(localStorage.getItem('user')||'');
+  return  user.token;
+}
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: jwtTokenGetter
+      }
+    })
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

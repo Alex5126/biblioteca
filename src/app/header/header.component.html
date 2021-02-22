@@ -1,0 +1,19 @@
+<nav class="navbar" role="navigation" aria-label="main navigation" style="background-color: gray;">
+    <div class="navbar-brand">
+        <a class="navbar-item" [routerLink]="['home']">
+            <img src="https://bulma.io/images/bulma-logo.png"
+                alt="" width="112" height="28">
+        </a>
+    </div>
+    <div class="navbar-end">
+        <div class="navbar-item">
+            <a class="item-menu" [routerLink]="['admin/users']" routerLinkActive="link-activate">Usuarios</a>
+        </div>
+        <div class="navbar-item">
+            <a class="item-menu" [routerLink]="['admin/books']" routerLinkActive="link-activate">Libros</a>
+        </div>
+        <div class="navbar-item">
+            <a class="item-menu" class="button is-light is-small" (click)="logout()">Log out</a>
+        </div>
+    </div>
+</nav>
