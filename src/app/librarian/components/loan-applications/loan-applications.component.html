@@ -1,0 +1,53 @@
+<div class="card-table">
+    <div class="card card-menu">
+        <header class="card-header">
+            <p class="card-header-title">
+              Solicitudes de Prestamos
+            </p>
+          </header>
+        <div *ngIf="!load" class="card-content">
+            <table class="table is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Libro</th>
+                        <th>Fecha</th>
+                        <th>Actualizacion</th>
+                        <th>Estatus</th>
+                        <th>Opcs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let loanApp of loanApps">
+                        <td>{{loanApp.id}}</td>
+                        <td>{{loanApp.user}}</td>
+                        <td>{{loanApp.book}}</td>
+                        <td>{{loanApp.date | date:'MM-dd-yyy'}}</td>
+                        <td>{{loanApp.update_date | date:'MM-dd-yyy'}}</td>
+                        <td>{{loanApp.status}}</td>
+                        <td>
+                            <div class="buttons">
+                                <button class="button is-success" (click)="updateLoanApp(loanApp, 'ACEPTADA')" [disabled]="loanApp.status != 'EN PROCESO'">Aceptar</button>
+                                <button class="button is-danger" (click)="updateLoanApp(loanApp, 'RECHAZADA')" [disabled]="loanApp.status != 'EN PROCESO'">Negar</button>
+                              </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="load" style="text-align: center; margin-top: 10%;">
+            <div class="lds-roller">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+

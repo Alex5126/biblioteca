@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LibrarianComponent } from './components/librarian/librarian.component';
+import { BorrowedBooksComponent } from './components/borrowed-books/borrowed-books.component';
+import { LoanApplicationsComponent } from './components/loan-applications/loan-applications.component';
 
 const routes: Routes = [
-    {path:'', component:LibrarianComponent}
+    {path: '', redirectTo:'request', pathMatch: 'full'},
+    {path:'request', component:LoanApplicationsComponent},
+    {path:'borrowed-books', component: BorrowedBooksComponent}
 ];
 
 @NgModule({

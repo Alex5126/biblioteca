@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LibrarianComponent } from './components/librarian/librarian.component';
 import { LibrarianRoutingModule } from './librarian-routing.module';
+import { LoanApplicationsComponent } from './components/loan-applications/loan-applications.component';
+import { BorrowedBooksComponent } from './components/borrowed-books/borrowed-books.component';
 
 
 
 @NgModule({
   declarations: [
-    LibrarianComponent
+    LoanApplicationsComponent,
+    BorrowedBooksComponent
   ],
   imports: [
     CommonModule,

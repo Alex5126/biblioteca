@@ -12,6 +12,12 @@
         <div *ngIf="util.user.type === 'ADMIN'" class="navbar-item">
             <a class="item-menu" [routerLink]="['admin/books']" routerLinkActive="link-activate">Libros</a>
         </div>
+        <div *ngIf="util.user.type === 'LIBRARIAN'" class="navbar-item">
+            <a class="item-menu" [routerLink]="['librarian/request']" routerLinkActive="link-activate">Solicitudes</a>
+        </div>
+        <div *ngIf="util.user.type === 'LIBRARIAN'" class="navbar-item">
+            <a class="item-menu" [routerLink]="['librarian/borrowed-books']" routerLinkActive="link-activate">Prestamos</a>
+        </div>
         <div class="navbar-item">
             <a class="item-menu" class="button is-light is-small" (click)="logout()">Log out</a>
         </div>
