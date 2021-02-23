@@ -45,7 +45,7 @@ export class LoanApplicationsComponent implements OnInit {
     }
     this.loanAppService.updateLoanApp(resp).subscribe(data => {
       console.log(data);
-      alert('usuario modificado correctamente');
+      alert('solicitud actualizada');
       this.editLoanApp = false;
       this.getLoanApps();
     }, error => {

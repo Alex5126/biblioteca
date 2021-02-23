@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoanHistory } from 'src/app/models/loanHistory';
+import { LoanHistoryService } from 'src/app/services/loan-history.service';
 
 
 @Component({
@@ -9,43 +11,41 @@ import { Component, OnInit } from '@angular/core';
 export class BorrowedBooksComponent implements OnInit {
 
   public load: boolean = true;
-  public loanApps: LoanApplication[] = [];
-  public editLoanApp: boolean = false;
+  public loanHists: LoanHistory[] = [];
+  public editLoanHist: boolean = false;
 
-  constructor(private loanAppService: LoanApplicationService,) {
+  constructor(private loanHistService: LoanHistoryService,) {
   }
 
 
   ngOnInit(): void {
-    this.getLoanApps();
+    this.getLoanHists();
   }
 
-  getLoanApps() {
+  getLoanHists() {
     this.load = true;
-    this.loanAppService.getAllLoanApps().subscribe(data => {      
-      this.loanApps = data;
-      console.log(this.loanApps);
-      
+    this.loanHistService.getAllLoanHist().subscribe(data => {      
+      this.loanHists = data;
       this.load = false;
     }, error => {
-      console.log(error)
+      console.log(error);
       this.load = false;
     });
   }
 
 
-  updateLoanApp(loanApp:LoanApplication, status:string){
-    let resp:LoanApplication = {
-      id:loanApp.id,
-      id_book:loanApp.id_book,
-      id_user:loanApp.id_user,
+  updateLoanHist(loanHist:LoanHistory, status:string){
+    let resp:LoanHistory = {
+      id:loanHist.id,
+      id_book:loanHist.id_book,
+      id_user:loanHist.id_user,
       status:status,
     }
-    this.loanAppService.updateLoanApp(resp).subscribe(data => {
+    this.loanHistService.updateLoanHist(resp).subscribe(data => {
       console.log(data);
-      alert('usuario modificado correctamente');
-      this.editLoanApp = false;
-      this.getLoanApps();
+      alert('Libro Entregado');
+      this.editLoanHist = false;
+      this.getLoanHists();
     }, error => {
       console.log(error);
       alert(error);

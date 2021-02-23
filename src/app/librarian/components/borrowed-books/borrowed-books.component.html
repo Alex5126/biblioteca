@@ -19,17 +19,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let loanApp of loanApps">
-                        <td>{{loanApp.id}}</td>
-                        <td>{{loanApp.user}}</td>
-                        <td>{{loanApp.book}}</td>
-                        <td>{{loanApp.date | date:'MM-dd-yyy'}}</td>
-                        <td>{{loanApp.update_date | date:'MM-dd-yyy'}}</td>
-                        <td>{{loanApp.status}}</td>
+                    <tr *ngFor="let loanHist of loanHists">
+                        <td>{{loanHist.id}}</td>
+                        <td>{{loanHist.user}}</td>
+                        <td>{{loanHist.book}}</td>
+                        <td>{{loanHist.loan_date | date:'MM-dd-yyy'}}</td>
+                        <td>{{loanHist.update_date | date:'MM-dd-yyy'}}</td>
+                        <td>{{loanHist.status}}</td>
                         <td>
                             <div class="buttons">
-                                <button class="button is-success" (click)="updateLoanApp(loanApp, 'ACEPTADA')" [disabled]="loanApp.status != 'EN PROCESO'">Aceptar</button>
-                                <button class="button is-danger" (click)="updateLoanApp(loanApp, 'RECHAZADA')" [disabled]="loanApp.status != 'EN PROCESO'">Negar</button>
+                                <button class="button is-success" (click)="updateLoanHist(loanHist, 'ENTREGADO')" [disabled]="loanHist.status != 'SIN ENTREGAR'">Entregado</button>
                               </div>
                         </td>
                     </tr>
