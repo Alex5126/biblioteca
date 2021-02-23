@@ -1,10 +1,10 @@
 <div class="card-table">
     <div class="card card-menu">
         <header class="card-header">
-            <p class="card-header-title">
-                Solicitudes de Prestamos
+            <p class="card-header-title" style="font-size: 20px;">
+              Historial de Prestamos
             </p>
-        </header>
+          </header>
         <div *ngIf="!load" class="card-content">
             <table class="table is-fullwidth">
                 <thead>
@@ -15,7 +15,6 @@
                         <th>Fecha</th>
                         <th>Actualizacion</th>
                         <th>Estatus</th>
-                        <th>Opcs</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,12 +25,6 @@
                         <td>{{loanHist.loan_date | date:'MM-dd-yyy'}}</td>
                         <td>{{loanHist.update_date | date:'MM-dd-yyy'}}</td>
                         <td>{{loanHist.status}}</td>
-                        <td>
-                            <div class="buttons">
-                                <button class="button is-success" (click)="updateLoanHist(loanHist, 'ENTREGADO')"
-                                    [disabled]="loanHist.status != 'SIN ENTREGAR'">Entregado</button>
-                            </div>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -50,3 +43,4 @@
         </div>
     </div>
 </div>
+

@@ -18,6 +18,10 @@ export class LoanHistoryService {
     return this.http.get<LoanHistory[]>(this.url);
   }
 
+  getLoanHistByIduser(id:any):Observable<LoanHistory[]>{
+    return this.http.get<LoanHistory[]>(`${this.url}/${id}`);
+  }
+
   addLoanHist(loanHist:LoanHistory):Observable<BasicResponse>{
     return this.http.post<BasicResponse>(this.url,loanHist);
   }

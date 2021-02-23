@@ -1,0 +1,48 @@
+.container{
+    margin: 25px 40px;
+}
+.card-book{
+    margin: 10px;
+    height: 100%;
+}
+
+.img-book{
+    text-align: center;
+    padding: 10px;
+    background-color: #efefef;
+}
+
+.item-info{
+    font-weight: 800;
+}
+
+.flex-container{
+    display: flex; 
+    flex-wrap: wrap;
+}
+
+.card-spacer{
+    flex-basis: 25%; 
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 992px) {
+    .card-spacer {
+        flex-basis: 50%;
+    }
+
+    .container{
+        margin: 20px 20px;
+    }
+  }
+  
+  /* On screens that are 600px or less, set the background color to olive */
+  @media screen and (max-width: 600px) {
+    .card-spacer {
+        flex-basis: 100%;
+    }
+
+    .container{
+        margin: 20px 20px;
+    }
+  }

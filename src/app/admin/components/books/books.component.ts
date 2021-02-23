@@ -70,6 +70,7 @@ export class BooksComponent implements OnInit {
       console.log(data);
       alert('Libro agregado correctamente');
       this.clear();
+      this.editBook = false;
       this.getBooks();
     }, error => {
       console.log(error);

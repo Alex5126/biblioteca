@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="card-table">
+        <div class="card card-menu">
+            <header class="card-header">
+                <p class="card-header-title" style="font-size: 20px;">
+                    Lista de libros
+                </p>
+            </header>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div *ngFor="let book of books" class="card-spacer">
+            <div class="card card-book">
+                <div class="img-book">
+                    <figure>
+                        <img [src]="book.image" alt="book" width="150px">
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content">
+                            <p class="item-info"> {{book.title}}</p>
+                            <p>{{book.author}}</p>
+                        </div>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <div class="buttons are-small">
+                        <button class="button is-link"  (click)="more(book.id)">Mostrar Mas</button>
+                    </div>
+                  </footer>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<div *ngFor="let book of books">
+    <div class="card card-table">
+        <div class="columns">
+            <div class="column is-one-third img-book">
+                <img [src]="book.image" alt="book" width="150px">
+            </div>
+            <div class="column">
+                <div class="content" style="margin: 25px">
+                    <p><span class="item-info">Titulo:</span> {{book.title}}</p>
+                    <p><span class="item-info">Autor:</span> {{book.author}}</p>
+                    <p><span class="item-info">Edicion:</span> {{book.edition}}</p>
+                    <br>
+                    <div class="buttons">
+                        <button class="button is-link"  (click)="more(book.id)">Mostrar Mas</button>
+                        <button class="button is-success" (click)="apply(book)">Solicitar Prestamo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->

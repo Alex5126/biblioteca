@@ -6,10 +6,22 @@ import { User } from '../models/user';
 })
 export class UtilsService {
 
-  public user:User;
+  public user:User = {
+    address:'',
+    email:'',
+    last_name:'',
+    name:'',
+    type:''
+  };
 
   constructor() {
-    this.user = JSON.parse(localStorage.getItem('user')||'').user;
+    this.getUser();
+  }
+
+  getUser(){
+    if(localStorage.getItem('user')){
+      this.user = JSON.parse(localStorage.getItem('user')||'').user;
+    }
   }
 
 }

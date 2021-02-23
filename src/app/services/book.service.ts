@@ -18,6 +18,10 @@ export class BookService {
     return this.http.get<Book[]>(this.url);
   }
 
+  getBookById(id:any):Observable<Book>{
+    return this.http.get<Book>(`${this.url}/${id}`);
+  }
+
   addBook(book:Book):Observable<BasicResponse>{
     return this.http.post<BasicResponse>(this.url,book);
   }

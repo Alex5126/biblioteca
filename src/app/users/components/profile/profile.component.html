@@ -1,0 +1,47 @@
+<div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+        <div class="card card-content">
+            <header class="card-header">
+                <p class="card-header-title" style="font-size: 20px;">
+                    Perfil de Usuario
+                </p>
+            </header>
+            <div class="content" style="margin-top: 20px;">
+                <p>
+                    <label class="label-item" for="name">Nombre:  </label> 
+                    <span *ngIf="!isEdit" class="label-data">{{user.name}}</span>
+                    <input *ngIf="isEdit" id="name" class="input" type="text"  [(ngModel)]="user.name" placeholder="Nombre">
+                </p>
+                <p>
+                    <label class="label-item" for="lastName">Apellidos:  </label> 
+                    <span *ngIf="!isEdit" class="label-data">{{user.last_name}}</span>
+                    <input *ngIf="isEdit" id="lastName" class="input" type="text"  [(ngModel)]="user.last_name" placeholder="apellidos">
+                </p>
+                <p>
+                    <label class="label-item" for="email">email:  </label> 
+                    <span *ngIf="!isEdit" class="label-data">{{user.email}}</span>
+                    <input *ngIf="isEdit" id="email" class="input" type="email"  [(ngModel)]="user.email" placeholder="example@domain.com">
+                </p>
+                <p>
+                    <label class="label-item" for="type">Tipo de Usuario:  </label> 
+                    <span class="label-data">{{user.type}}</span>
+                </p>
+                <p>
+                    <label class="label-item" for="password">Contraseña:  </label> 
+                    <span *ngIf="!isEdit" class="label-data">{{user.password}}</span>
+                    <input *ngIf="isEdit" id="password" class="input" type="password"  [(ngModel)]="user.password" placeholder="*******">
+                </p>
+                <p>
+                    <label class="label-item" for="address">Dirección:  </label> 
+                    <span *ngIf="!isEdit" class="label-data">{{user.address}}</span>
+                    <textarea *ngIf="isEdit" id="address" cols="30" class="textarea" [(ngModel)]="user.address" placeholder="Dirreccion"></textarea>
+                </p>
+            </div>
+            <div class="buttons">
+                <button *ngIf="!isEdit" class="button is-link" (click)="isEdit = true">Editar</button>
+                <button *ngIf="isEdit" class="button is-success" (click)="updateUser()">Aceptar</button>
+                <button *ngIf="isEdit" class="button is-danger" (click)="isEdit = false;getUserData()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

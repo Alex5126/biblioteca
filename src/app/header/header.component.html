@@ -1,8 +1,8 @@
 <nav class="navbar" role="navigation" aria-label="main navigation" style="background-color: gray;">
     <div class="navbar-brand">
         <a class="navbar-item" [routerLink]="['home']">
-            <img src="https://bulma.io/images/bulma-logo.png"
-                alt="" width="112" height="28">
+            <img src="assets/images/logo_lib.png"
+                alt="" height="100%">
         </a>
     </div>
     <div class="navbar-end">
@@ -17,6 +17,15 @@
         </div>
         <div *ngIf="util.user.type === 'LIBRARIAN'" class="navbar-item">
             <a class="item-menu" [routerLink]="['librarian/borrowed-books']" routerLinkActive="link-activate">Prestamos</a>
+        </div>
+        <div *ngIf="util.user.type === 'LECTOR'" class="navbar-item">
+            <a class="item-menu" [routerLink]="['users/books']" routerLinkActive="link-activate">Libros</a>
+        </div>
+        <div *ngIf="util.user.type === 'LECTOR'" class="navbar-item">
+            <a class="item-menu" [routerLink]="['users/loans']" routerLinkActive="link-activate">Prestamos</a>
+        </div>
+        <div *ngIf="util.user.type === 'LECTOR'" class="navbar-item">
+            <a class="item-menu" [routerLink]="['users/profile']" routerLinkActive="link-activate">Perfil</a>
         </div>
         <div class="navbar-item">
             <a class="item-menu" class="button is-light is-small" (click)="logout()">Log out</a>
