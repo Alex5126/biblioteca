@@ -20,6 +20,12 @@ export class LoginComponent implements OnInit {
     private router:Router,
     private util:UtilsService
   ) { 
+    if(this.authService.isAuthenticate()){
+      this.redirecUser(util.user.type);
+    }else{
+      this.authService.logout();
+    }
+
     this.formLogin = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -41,16 +47,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('user',JSON.stringify(data));
       this.load = false;
       this.util.user = data.user;
-      switch (data.user.type) {
-        case 'LECTOR': this.router.navigate(['users']);
-          break;
-        case 'LIBRARIAN': this.router.navigate(['librarian']);
-          break;
-        case 'ADMIN': this.router.navigate(['admin']);
-          break;
-        default:
-          break;
-      }
+      this.redirecUser(data.user.type);
     }, error => {
       console.log(error.error.message);
       alert(`Error ${error.error.message}`);
@@ -58,4 +55,18 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  redirecUser(type:string){
+    switch (type) {
+      case 'LECTOR': this.router.navigate(['users']);
+        break;
+      case 'LIBRARIAN': this.router.navigate(['librarian']);
+        break;
+      case 'ADMIN': this.router.navigate(['admin']);
+        break;
+      default:
+        this.authService.logout();
+        this.router.navigate(['login']);
+        break;
+    }
+  }
 }
