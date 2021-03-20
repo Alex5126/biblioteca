@@ -1,0 +1,46 @@
+<div class="container">
+
+    <div class="card" style="margin: 10px 0;">
+        <div class="card-body">
+            <h1>Historial de prestamos</h1>
+        </div>
+    </div>
+
+    <table mat-table style="width: 100%;" [dataSource]="loanHistory" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef class="header-table"> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="user">
+            <th mat-header-cell *matHeaderCellDef class="header-table"> Usuario </th>
+            <td mat-cell *matCellDef="let element"> {{element.user}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="book">
+            <th mat-header-cell *matHeaderCellDef class="header-table"> Libro </th>
+            <td mat-cell *matCellDef="let element"> {{element.book}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="loan_date">
+            <th mat-header-cell *matHeaderCellDef class="header-table"> Fecha </th>
+            <td mat-cell *matCellDef="let element"> {{element.loan_date | date: 'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="update_date">
+            <th mat-header-cell *matHeaderCellDef class="header-table"> Actualización </th>
+            <td mat-cell *matCellDef="let element"> {{element.update_date | date: 'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef class="header-table"> STATUS </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-spinner *ngIf="loanHistory.length === 0" style="margin: auto;" [diameter]="80"></mat-spinner>
+</div>

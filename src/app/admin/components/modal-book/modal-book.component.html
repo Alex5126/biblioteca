@@ -1,6 +1,7 @@
 <h1 mat-dialog-title>Datos del Libro</h1>
 <div mat-dialog-content>
-    <form [formGroup]="formBook">
+    <mat-spinner *ngIf="spinner === true" style="margin: auto;" [diameter]="200"></mat-spinner>
+    <form [formGroup]="formBook" *ngIf="spinner === false">
         <div class="row">
             <div class="col-md-3">
                 <img *ngIf="formBook.controls['image'].value == null"
@@ -43,7 +44,7 @@
     </form>
 </div>
 <div mat-dialog-actions>
-    <button type="button" class="btn btn-success" (click)="sendBook()">Enviar</button>
-    <button type="button" class="btn btn-primary" (click)="clean()">Limpiar</button>
+    <button type="button" class="btn btn-success" (click)="sendBook()">Enviar</button>&nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-primary" (click)="clean()">Limpiar</button>&nbsp;&nbsp;&nbsp;
     <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
 </div>

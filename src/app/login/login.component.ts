@@ -26,10 +26,15 @@ export class LoginComponent implements OnInit {
       console.log('este usuario ya entro');
       let user:RespLogin = JSON.parse(localStorage.getItem('user')||'');
       switch (user.user.type) {
-        case 'ADMIN':
+        case 'c':
           this.router.navigate(['admin']);
-          break;
-      
+        break;
+        case 'LIBRARIAN':
+          this.router.navigate(['librarian']);
+        break;
+        case 'LECTOR':
+          this.router.navigate(['user']);
+        break;
         default: this.router.navigate(['login']);
           break;
       }
@@ -49,8 +54,13 @@ export class LoginComponent implements OnInit {
       switch (resp.user.type) {
         case 'ADMIN':
           this.router.navigate(['admin']);
-          break;
-      
+        break;
+        case 'LIBRARIAN':
+          this.router.navigate(['librarian']);
+        break;
+        case 'LECTOR':
+          this.router.navigate(['user']);
+        break;
         default: this.router.navigate(['login']);
           break;
       }

@@ -16,18 +16,13 @@
         <small *ngIf="message === true">Por favor escribe nuevamente tu contraseña</small><br/>
 
         <label for="type">Tipo</label>
-        <select class="form-control" formControlName="type" id="type">
-            <option value="ADMIN">ADMIN</option>
-            <option value="LIBRARIAN">BIBLIOTECARIO</option>
-            <option value="LECTOR">LECTOR</option>
-        </select>
+        <input id="type" formControlName="type" type="text" class="form-control" readonly>
 
         <label for="address">Direccion</label>
         <textarea id="address" formControlName="address" class="form-control"></textarea>
     </form>
 </div>
 <div mat-dialog-actions>
-    <button type="button" class="btn btn-success" (click)="sendUser()">Enviar</button>&nbsp;&nbsp;&nbsp;
-    <button type="button" class="btn btn-primary" (click)="clean()">Limpiar</button>&nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-success" (click)="sendUser()">Enviar</button>
     <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
 </div>

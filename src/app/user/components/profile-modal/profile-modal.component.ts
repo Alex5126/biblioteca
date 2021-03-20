@@ -5,16 +5,16 @@ import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-modal-user',
-  templateUrl: './modal-user.component.html',
-  styleUrls: ['./modal-user.component.scss']
+  selector: 'app-profile-modal',
+  templateUrl: './profile-modal.component.html',
+  styleUrls: ['./profile-modal.component.scss']
 })
-export class ModalUserComponent implements OnInit {
+export class ProfileModalComponent implements OnInit {
 
   public formUser: FormGroup;
 
   constructor(
-    public dialogRef: MatDialogRef<ModalUserComponent>,
+    public dialogRef: MatDialogRef<ProfileModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: User, 
     private formBuilder: FormBuilder, 
     private userService:UserService) {
@@ -46,11 +46,6 @@ export class ModalUserComponent implements OnInit {
     }
   }
 
-  clean(){
-    this.formUser.reset();
-    console.log(this.formUser.value);
-  }
-
   close(){
     this.dialogRef.close({message:'cerrado'})
   }
@@ -59,25 +54,10 @@ export class ModalUserComponent implements OnInit {
     if(!this.formUser.valid){
       alert('datos no validos');
     } else {
-      this.spinner = true
-      if(this.message === true){
-        this.updateUser();
-      }else{
-        this.addUser();
-      }
+      this.spinner = true;
+      this.updateUser();
     }
     //console.log(id);
-  }
-
-  addUser(){
-    this.userService.addUser(this.formUser.value).subscribe(data => {
-      console.log(data);
-      alert(data.message);
-      this.dialogRef.close('Usuario creado');
-    }, error => {
-      console.error(error);
-      alert('Error al guardar');
-    });
   }
 
   updateUser(){

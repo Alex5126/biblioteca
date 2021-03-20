@@ -3,8 +3,19 @@
         <span>Libreria</span>
         <span class="example-spacer"></span>
         <div *ngIf="authService.user.token != ''">
-            <a [routerLink]="['/admin/users']" routerLinkActive="activate" class="item-header">Usuarios</a>
-            <a [routerLink]="['/admin/books']" routerLinkActive="activate" class="item-header">Libros</a>
+            <span *ngIf="authService.user.user.type === 'ADMIN'">
+                <a [routerLink]="['/admin/users']" routerLinkActive="activate" class="item-header">Usuarios</a>
+                <a [routerLink]="['/admin/books']" routerLinkActive="activate" class="item-header">Libros</a>
+            </span>
+            <span *ngIf="authService.user.user.type === 'LIBRARIAN'">
+                <a [routerLink]="['/librarian/request']" routerLinkActive="activate" class="item-header">Solicitudes</a>
+                <a [routerLink]="['/librarian/borrowed-books']" routerLinkActive="activate" class="item-header">Prestamos</a>
+            </span>
+            <span *ngIf="authService.user.user.type === 'LECTOR'">
+                <a [routerLink]="['/user/books']" routerLinkActive="activate" class="item-header">Libros</a>
+                <a [routerLink]="['/user/loans']" routerLinkActive="activate" class="item-header">Prestamos</a>
+                <a [routerLink]="['/user/profile']" routerLinkActive="activate" class="item-header">Perfil</a>
+            </span>
             <button type="button" (click)="logout()" class="btn exit-btn">Salir</button>
         </div>
     </mat-toolbar-row>

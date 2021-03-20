@@ -11,6 +11,8 @@ const routes: Routes = [
   { path: 'tecnologicos', component: TecnologicosComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate:[AuthGuard] },
+  { path: 'librarian', loadChildren: () => import('./librarian/librarian.module').then(m => m.LibrarianModule), canActivate:[AuthGuard] },
+  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule), canActivate:[AuthGuard] },
   { path: '**' , redirectTo:'login'}
 ];
 

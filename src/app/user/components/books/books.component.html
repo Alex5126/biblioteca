@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="card" style="margin: 10px 0;" >
+        <div class="card-body">
+            <h1 class="name">Lista de libros</h1>
+        </div>
+    </div>
+    <div class="row ">
+        <div *ngFor="let book of books" class="marginCard col-md-4">
+            <div class=" card shadow">
+                <div class="card-header">
+                    <img  [src]="book.image" height="250px" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title name">{{book.title}}</h3>
+                    <h4 class="card-title">{{book.author}}</h4>
+                </div>
+                <div class="card-footer ">
+                    <button type="button" class="btn btn-primary" (click)="openModal(book)" >Mostrar más</button>
+                </div>
+            </div>
+            <br/>
+        </div>
+    </div>
+</div>

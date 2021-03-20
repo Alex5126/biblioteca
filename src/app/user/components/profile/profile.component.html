@@ -1,0 +1,21 @@
+<div class="container">
+        <div class="marginCard col-md-10">
+            <div class="card shadow">
+                <div class="card " style="margin: 15px;">
+                    <h1 class="name center">Perfil de usuario</h1>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title name"><b>Nombre</b> {{name}}</h3>
+                    <h4 class="card-title"><b>Apellido(s)</b> {{last_name}}</h4>
+                    <h4 class="card-title"><b>email</b> {{email}}</h4>
+                    <h4 class="card-title"><b>Tipo de usuario</b> {{type}}</h4>
+                    <h4 class="card-title"><b>Contraseña</b> ******</h4>
+                    <h4 class="card-title"><b>Dirección</b> {{address}}</h4>
+                </div>
+                <div class="card-footer center">
+                    <button type="button" class="btn btn-primary" (click)="openModal(users)">Editar</button>
+                </div>
+            </div>
+            <br/>
+        </div>
+</div>

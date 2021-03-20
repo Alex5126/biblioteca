@@ -1,0 +1,30 @@
+<h1 mat-dialog-title >{{bookid.title}}</h1>
+<div mat-dialog-content>
+    <div class="row">
+    <div class="col-md-3">
+        <img [src]="bookid.image"
+            width="150px" alt="img book">
+    </div>
+    <div class="col-md-9">
+        <div class="row">
+        <div class="col-md-2">
+            <h4 class="name">Título</h4>
+            <h4 class="name">Autor</h4>
+            <h4 class="name">Edición</h4>
+        </div>
+        <div class="col-md-7">
+            <h4>{{bookid.title}}</h4>
+            <h4>{{bookid.author}}</h4>
+            <h4>{{bookid.edition}}</h4>
+        </div>
+    </div>
+        <h4 class="name">Descripción</h4>
+        {{bookid.description}}
+    </div>
+</div>
+<br>
+</div>
+<div mat-dialog-actions>
+    <button type="button" class="btn btn-success" (click)="reserve()">Solicitar prestamo</button>&nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
+</div>

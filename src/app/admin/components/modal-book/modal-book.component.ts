@@ -12,6 +12,7 @@ import { BookService } from 'src/app/services/book.service';
 export class ModalBookComponent implements OnInit {
 
   public formBook: FormGroup;
+  public spinner = false;
 
   constructor(
     public dialogRef: MatDialogRef<ModalBookComponent>,
@@ -46,16 +47,19 @@ export class ModalBookComponent implements OnInit {
   }
 
   sendBook() {
+    let id = this.formBook.controls['id'].value;
     if(!this.formBook.valid) 
       alert('datos no validos');
-    let id = this.formBook.controls['id'].value;
+    else {
+      this.spinner = true;
+      if(id != null && id != 0){
+        this.updateBook();
+      }else{
+        this.addBook();
+      }
+    }
     //console.log(id);
   
-    if(id != null && id != 0){
-      this.updateBook();
-    }else{
-      this.addBook();
-    }
 
   }
 
