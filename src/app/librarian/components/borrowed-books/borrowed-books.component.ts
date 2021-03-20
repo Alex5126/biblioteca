@@ -32,16 +32,22 @@ export class BorrowedBooksComponent implements OnInit {
   }
 
   deliver(loanHistory:LoanHistory){
-    loanHistory.update_date = Date()
-    loanHistory.status = "ENTREGADO"
+    const dato:LoanHistory = {
+      id : loanHistory.id,
+      id_book : loanHistory.id_book,
+      id_user : loanHistory.id_user,
+      status : "ENTREGADO"
+    }
+    //loanHistory.update_date = Date()
+    //loanHistory.status = "ENTREGADO"
     console.log(loanHistory)
-    /*this.loanHistoryService.updateLoanApp(loanHistory).subscribe(data => {
+    this.loanHistoryService.updateLoanApp(dato).subscribe(data => {
       console.log(data);
       alert(data.message);
     }, error => {
       console.error(error);
       alert('Error al guardar');
-    });*/
+    });
     this.getLoanHistory()
   }
 
