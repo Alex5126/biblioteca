@@ -12,23 +12,23 @@ export class LoanHistoryService {
 
   constructor(private http:HttpClient) { }
 
-  getLoanApp():Observable<LoanHistory[]>{
+  getLoanHist():Observable<LoanHistory[]>{
     return this.http.get<LoanHistory[]>(`${environment.apiUrl}/loan-hist`);
   }
 
-  getLoanAppID(id:any):Observable<LoanHistory[]>{
+  getLoanHistID(id:any):Observable<LoanHistory[]>{
     return this.http.get<LoanHistory[]>(`${environment.apiUrl}/loan-hist/${id}`);
   }
   
-  deleteLoanApp(id:any):Observable<BasicResponse>{
+  deleteLoanHist(id:any):Observable<BasicResponse>{
     return this.http.delete<BasicResponse>(`${environment.apiUrl}/loan-hist/${id}`);
   }
 
-  addLoanApp(loanHistory:LoanHistory):Observable<BasicResponse>{
+  addLoanHist(loanHistory:LoanHistory):Observable<BasicResponse>{
     return this.http.post<BasicResponse>(`${environment.apiUrl}/loan-hist`,loanHistory);
   }
 
-  updateLoanApp(loanHistory:LoanHistory){
+  updateLoanHist(loanHistory:LoanHistory){
     console.log(loanHistory)
     return this.http.put<BasicResponse>(`${environment.apiUrl}/loan-hist/${loanHistory.id}`,loanHistory);
   }

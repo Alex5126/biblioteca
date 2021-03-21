@@ -28,13 +28,13 @@ export class LoginComponent implements OnInit {
       switch (user.user.type) {
         case 'c':
           this.router.navigate(['admin']);
-        break;
+          break;
         case 'LIBRARIAN':
           this.router.navigate(['librarian']);
-        break;
+          break;
         case 'LECTOR':
           this.router.navigate(['user']);
-        break;
+          break;
         default: this.router.navigate(['login']);
           break;
       }
@@ -54,20 +54,26 @@ export class LoginComponent implements OnInit {
       switch (resp.user.type) {
         case 'ADMIN':
           this.router.navigate(['admin']);
-        break;
+          break;
         case 'LIBRARIAN':
           this.router.navigate(['librarian']);
-        break;
+          break;
         case 'LECTOR':
           this.router.navigate(['user']);
-        break;
+          break;
         default: this.router.navigate(['login']);
           break;
       }
       
     }, e => {
       console.error(e);
+      alert("Lo sentimos, su correo o contraseña están incorrectos. Ingrese los datos nuevamente")
+      /*this.clean();*/
     });
   }
+
+  /*clean(){
+    this.formUser.reset();
+  }*/
 
 }

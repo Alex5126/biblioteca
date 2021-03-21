@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoansComponent implements OnInit {
 
-  public iduser:any;
+  private iduser = this.authService.user.user.id;
   public displayedColumns:string[] = [ 'id', 'user', 'book','loan_date', 'update_date', 'status'];
   public loanHistory:LoanHistory[] = [];
 
@@ -21,8 +21,8 @@ export class LoansComponent implements OnInit {
   }
 
   getLoanHistory() {
-    this.iduser = this.authService.user.user.id
-    this.loanHistoryService.getLoanAppID(this.iduser).subscribe(data => {
+    console.log(this.iduser)
+    this.loanHistoryService.getLoanHistID(this.iduser).subscribe(data => {
       this.loanHistory = data;
       console.log(this.loanHistory)
       if(this.loanHistory.length === 0)

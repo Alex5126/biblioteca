@@ -20,14 +20,11 @@ export class BookModalComponent implements OnInit {
   ) { }
 
   public bookid: any;
-  public iduser: any;
-  public loanApplication:LoanApplication[] = [];
+  private iduser = this.authService.user.user.id;
 
   ngOnInit(): void {
     this.bookid =this.data;
     console.log(this.bookid)
-    this.iduser = this.authService.user.user.id
-    console.log(this.iduser) 
   }
 
   close(){
@@ -35,7 +32,20 @@ export class BookModalComponent implements OnInit {
   }
 
   reserve(){
-    console.log("reservado")
+    const datos: LoanApplication = {
+      id_user : this.iduser,
+      id_book : this.bookid.id,
+      status : "EN PROCESO"
+    }
+    console.log(datos)
+    this.loanApplicationsService.addLoanApp(datos).subscribe(data => {
+      console.log(data);
+      alert(data.message);
+      this.dialogRef.close('Prestamo de libro en proceso');
+    }, error => {
+      console.error(error);
+      alert('Error al guardar');
+    });
   }
 
 }

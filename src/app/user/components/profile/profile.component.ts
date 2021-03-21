@@ -14,25 +14,23 @@ export class ProfileComponent implements OnInit {
 
   constructor(private userService: UserService, private authService:AuthService, public modalUser: MatDialog) { }
 
-  public iduser:any;
-  //public users: User[] = [];
+  private iduser = this.authService.user.user.id;
   public users:any;
   public name:any;
   public last_name:any;
   public email:any;
   public type:any;
   public address:any;
+  public user: User[] = [];
 
   ngOnInit(): void {
-    this.getUsers()
-    
+    this.getUser()
   }
 
-  getUsers() {
-    this.iduser = this.authService.user.user.id
+  getUser() {
     this.userService.getUsersID(this.iduser).subscribe(data => {
       this.users = data;
-      //console.log(this.usuario.name)
+      //console.log(this.users)
       this.name = this.users.name
       this.last_name = this.users.last_name
       this.email = this.users.email
@@ -42,7 +40,7 @@ export class ProfileComponent implements OnInit {
       console.log(e.error.message);
       alert(e.error.message);
     });
-
+    
   } 
 
   openModal(user?: User) {
@@ -53,7 +51,7 @@ export class ProfileComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getUsers();
+      this.getUser();
       console.log(result);
     });
   }

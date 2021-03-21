@@ -13,7 +13,7 @@
         
         <label for="password">Contraseña</label>
         <input id="password" formControlName="password" type="password" class="form-control" placeholder="Contraseña">
-        <small *ngIf="message === true">Por favor escribe nuevamente tu contraseña</small><br/>
+        <small *ngIf="message === true" style="color: red;">Por favor escribe nuevamente tu contraseña</small><br/>
 
         <label for="type">Tipo</label>
         <select class="form-control" formControlName="type" id="type">

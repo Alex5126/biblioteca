@@ -7,19 +7,19 @@
     </div>
     <div class="col-md-9">
         <div class="row">
-        <div class="col-md-2">
-            <h4 class="name">Título</h4>
-            <h4 class="name">Autor</h4>
-            <h4 class="name">Edición</h4>
+            <div class="col-md-2">
+                <h4 class="name">Título</h4>
+                <h4 class="name">Autor</h4>
+                <h4 class="name">Edición</h4>
+            </div>
+            <div class="col-md-7">
+                <h4>{{bookid.title}}</h4>
+                <h4>{{bookid.author}}</h4>
+                <h4>{{bookid.edition}}</h4>
+            </div>
         </div>
-        <div class="col-md-7">
-            <h4>{{bookid.title}}</h4>
-            <h4>{{bookid.author}}</h4>
-            <h4>{{bookid.edition}}</h4>
-        </div>
-    </div>
         <h4 class="name">Descripción</h4>
-        {{bookid.description}}
+        <textarea  class="col-md-12" rows="7" readonly>{{bookid.description}}</textarea>
     </div>
 </div>
 <br>

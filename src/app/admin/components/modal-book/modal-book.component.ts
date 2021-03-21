@@ -67,7 +67,7 @@ export class ModalBookComponent implements OnInit {
     this.bookService.addBook(this.formBook.value).subscribe(data => {
       console.log(data);
       alert(data.message);
-      this.dialogRef.close('Usuario creado');
+      this.dialogRef.close('Libro creado');
     }, error => {
       console.error(error);
       alert('Error al guardar');
@@ -78,6 +78,7 @@ export class ModalBookComponent implements OnInit {
     this.bookService.updateBook(this.formBook.value).subscribe(data => {
       console.log(data);
       alert(data.message);
+      this.dialogRef.close('Libro actualizado');
     }, error => {
       console.error(error);
       alert('Error al guardar');

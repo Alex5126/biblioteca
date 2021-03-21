@@ -43,11 +43,11 @@
             <td mat-cell *matCellDef="let element" style="text-align: center;">
                 <button type="button" class="btn btn-success" 
                     [disabled]="element.status === 'RECHAZADA'|| element.status === 'ACEPTADA' " 
-                    (click)="deliverAcept(element)">Aceptar
+                    (click)="deliver(element)">Aceptar
                 </button>&nbsp;&nbsp;&nbsp;
                 <button type="button" class="btn btn-danger" 
                     [disabled]="element.status === 'RECHAZADA'|| element.status === 'ACEPTADA' " 
-                    (click)="deliver(element)">Negar
+                    (click)="deliverAcept(element)">Negar
                 </button>
             </td>
             

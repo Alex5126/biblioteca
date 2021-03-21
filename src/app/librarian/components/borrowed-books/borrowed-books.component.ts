@@ -9,7 +9,6 @@ import { LoanHistoryService } from 'src/app/services/loan-history.service';
 })
 export class BorrowedBooksComponent implements OnInit {
 
-  public iduser:any;
   public displayedColumns:string[] = [ 'id', 'user', 'book','loan_date', 'update_date', 'status', 'opcs'];
   public loanHistory:LoanHistory[] = [];
 
@@ -20,11 +19,11 @@ export class BorrowedBooksComponent implements OnInit {
   }
 
   getLoanHistory() {
-    this.loanHistoryService.getLoanApp().subscribe(data => {
+    this.loanHistoryService.getLoanHist().subscribe(data => {
       this.loanHistory = data;
       console.log(this.loanHistory)
       if(this.loanHistory.length === 0)
-        alert("No ha pedido prestamo de ningún libro aún")
+        alert("No se ha aceptado ninguna solicitud de libros aún")
     }, e => {
       console.log(e.error.message);
       alert(e.error.message);
@@ -38,10 +37,7 @@ export class BorrowedBooksComponent implements OnInit {
       id_user : loanHistory.id_user,
       status : "ENTREGADO"
     }
-    //loanHistory.update_date = Date()
-    //loanHistory.status = "ENTREGADO"
-    console.log(loanHistory)
-    this.loanHistoryService.updateLoanApp(dato).subscribe(data => {
+    this.loanHistoryService.updateLoanHist(dato).subscribe(data => {
       console.log(data);
       alert(data.message);
     }, error => {

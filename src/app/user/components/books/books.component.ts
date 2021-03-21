@@ -31,7 +31,7 @@ export class BooksComponent implements OnInit {
   openModal (book?: Book) {
     console.log(book)
     const dialogRef = this.bookModal.open(BookModalComponent, {
-      height: '550px',
+      height: '500px',
       width: '800px',
       data: book
     });

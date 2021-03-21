@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
-import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { ModalUserComponent } from '../modal-user/modal-user.component';
 
@@ -17,7 +15,7 @@ export class UsersComponent implements OnInit {
   public displayedColumns: string[] = ['id', 'name', 'last_name', 'email', 'address', 'type', 'opcs'];
   public users: User[] = [];
 
-  constructor(private userService: UserService, public modalUser: MatDialog, private authService:AuthService) { }
+  constructor(private userService: UserService, public modalUser: MatDialog) { }
 
   ngOnInit(): void {
     this.getUsers();

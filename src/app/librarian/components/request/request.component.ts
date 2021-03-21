@@ -9,7 +9,6 @@ import { LoanApplicationsService } from 'src/app/services/loan-applications.serv
 })
 export class RequestComponent implements OnInit {
 
-  public iduser:any;
   public displayedColumns:string[] = [ 'id', 'user', 'book','date', 'update_date', 'status', 'opcs'];
   public loanApplication:LoanApplication[] = [];
 
@@ -32,29 +31,35 @@ export class RequestComponent implements OnInit {
   }
 
   deliver(loanApplication:LoanApplication){
-    loanApplication.update_date = Date()
-    loanApplication.status = "RECHAZADA"
-    console.log(loanApplication.id)
-    /*this.loanApplicationsService.updateLoanApp(loanApplication).subscribe(data => {
+    const dato:LoanApplication = {
+      id : loanApplication.id,
+      id_book : loanApplication.id_book,
+      id_user : loanApplication.id_user,
+      status : "ACEPTADA"
+    }
+    this.loanApplicationsService.updateLoanApp(dato).subscribe(data => {
       console.log(data);
       alert(data.message);
     }, error => {
       console.error(error);
       alert('Error al guardar');
-    });*/
+    });
     this.getLoanApp()
   }
   deliverAcept(loanApplication:LoanApplication){
-    loanApplication.update_date = Date()
-    loanApplication.status = "ACEPTADA"
-    console.log(loanApplication.id)
-    /*this.loanApplicationsService.updateLoanApp(loanApplication).subscribe(data => {
+    const dato:LoanApplication = {
+      id : loanApplication.id,
+      id_book : loanApplication.id_book,
+      id_user : loanApplication.id_user,
+      status : "RECHAZADA"
+    }
+    this.loanApplicationsService.updateLoanApp(dato).subscribe(data => {
       console.log(data);
       alert(data.message);
     }, error => {
       console.error(error);
       alert('Error al guardar');
-    });*/
+    });
     this.getLoanApp()
   }
 
