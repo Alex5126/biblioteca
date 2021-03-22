@@ -4,7 +4,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { TecnologicosComponent } from './tecnologicos/tecnologicos.component';
 
-//routes
+//routes 2
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'reader', loadChildren: () => import('./reader/reader.module').then(m => m.ReaderModule), canActivate:[AuthGuard]  }, 
