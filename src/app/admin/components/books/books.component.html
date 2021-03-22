@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="authService.user.token != '' && authService.user.user.type == 'ADMIN'" class="container">
 
     <div class="card" style="margin: 10px 0;">
         <div class="card-body">
@@ -50,6 +50,8 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-spinner *ngIf="books.length === 0" style="margin: auto;" [diameter]="80"></mat-spinner>
+   
+        <mat-spinner *ngIf="books.length === 0" style="margin: auto;" [diameter]="80"></mat-spinner>
+    
 
 </div>

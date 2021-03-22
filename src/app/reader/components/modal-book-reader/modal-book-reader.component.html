@@ -1,0 +1,43 @@
+
+
+   
+        <mat-toolbar style="color: black;">
+            <mat-toolbar-row >
+                <span>Datos del Libro</span>
+                <span class="example-spacer" ></span>
+        <div>
+            <button type="button" class="btn btn-success" style="margin: 0 10x;" (click)="addLoanApp()">Solicitar Prestamo</button>
+            <button type="button" class="btn btn-danger"  style="margin: 0 10px;" (click)="close()">Cerrar</button>
+        </div>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+            <div style="margin: 1pc 10px;">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="title" class="constant-label">Titulo:</label>
+                                <p><label id="title"  class="label-control">{{data.title}}</label></p>
+                                <label for="author" class="constant-label">Autor:</label>
+                                <p><label id="author"  class="label-control" >{{data.author}}</label></p>
+                                <label for="edition" class="constant-label">Edición:</label>
+                                <p><label id="edition"  class="label-control" >{{data.edition}}</label></p>
+                            </div>
+                            <div class="col-md-3">
+                                <img *ngIf="data.image == null"
+                                    src="https://image.flaticon.com/icons/png/512/33/33277.png" width="150px" alt="img book">
+                                <img *ngIf="data.image != null" [src]="data.image"
+                                    width="150px" alt="img book" style="margin: 1pc 10px;">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <p class="constant-label-description"><label for="description">Descripcion:</label></p>
+                    <label id="description"  rows="7" class="label-control-description" >{{data.description}}</label>
+                </div>
+            </div>
+ 
+

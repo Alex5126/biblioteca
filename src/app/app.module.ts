@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BookComponent } from './book/book.component';
+
 import { ExpPipe } from './exp.pipe';
 import { TecnologicosComponent } from './tecnologicos/tecnologicos.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,14 +14,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { JwtInterceptor } from './interceptor/token-interceptor';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent,
     ExpPipe,
     TecnologicosComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    
   ],
   imports: [
     BrowserModule,

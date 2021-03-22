@@ -17,10 +17,13 @@ export class UsersComponent implements OnInit {
   public displayedColumns: string[] = ['id', 'name', 'last_name', 'email', 'address', 'type', 'opcs'];
   public users: User[] = [];
 
-  constructor(private userService: UserService, public modalUser: MatDialog, private authService:AuthService) { }
+
+  constructor(private userService: UserService, public modalUser: MatDialog, public authService:AuthService) { }
 
   ngOnInit(): void {
-    this.getUsers();
+    setTimeout(() => {
+        this.getUsers();;
+     }, 200)
   }
 
   getUsers() {
@@ -28,15 +31,16 @@ export class UsersComponent implements OnInit {
       this.users = data;
     }, e => {
       console.log(e.error.message);
-      alert(e.error.message);
+      alert("No se pudo obtener la informacion");
+      this.authService.logout();
     });
-
   }
 
   openModal(user?: User) {
     const dialogRef = this.modalUser.open(ModalUserComponent, {
       height: '650px',
       width: '500px',
+      disableClose: true,
       data: user
     });
 
@@ -48,10 +52,14 @@ export class UsersComponent implements OnInit {
 
   deleteUser(user: User) {
     if (!confirm(`Desea eliminar a ${user.name} ?`)) return;
-
     this.userService.deleteUser(user.id).subscribe(resp => {
-      alert(resp.message);
-      this.getUsers();
+      alert("Usuario eliminado");
+      setTimeout(() => {
+        this.getUsers();
+      }, 200)
+    }, e => {
+      console.error(e);
+      alert("No se pudo borrar el usuario");
     });
   }
 

@@ -2,10 +2,21 @@
     <mat-toolbar-row>
         <span>Libreria</span>
         <span class="example-spacer"></span>
-        <div *ngIf="authService.user.token != ''">
+        <div *ngIf="authService.user.token != '' && authService.user.user.type == 'ADMIN'">
             <a [routerLink]="['/admin/users']" routerLinkActive="activate" class="item-header">Usuarios</a>
             <a [routerLink]="['/admin/books']" routerLinkActive="activate" class="item-header">Libros</a>
             <button type="button" (click)="logout()" class="btn exit-btn">Salir</button>
+        </div>
+        <div *ngIf="authService.user.token != '' && authService.user.user.type == 'LIBRARIAN'">
+            <a [routerLink]="['/librarian/request']" routerLinkActive="activate" class="item-header">Solicitudes</a>
+            <a [routerLink]="['/librarian/borrowed']" routerLinkActive="activate" class="item-header">Prestamos</a>
+            <button type="button" (click)="logout()" class="btn exit-btn">Salir</button>
+        </div>
+        <div *ngIf="authService.user.token != '' && authService.user.user.type == 'LECTOR'">
+            <a [routerLink]="['/reader/book']" routerLinkActive="activate" class="item-header">Libros</a>
+            <a [routerLink]="['/reader/loans']" routerLinkActive="activate" class="item-header">Prestamos</a>
+            <a [routerLink]="['/reader/profile']" routerLinkActive="activate" class="item-header">Perfil</a>
+            <button type="button" (click)="logout()" class="btn btn-light">Salir</button>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>

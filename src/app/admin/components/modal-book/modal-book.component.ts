@@ -47,10 +47,8 @@ export class ModalBookComponent implements OnInit {
 
   sendBook() {
     if(!this.formBook.valid) 
-      alert('datos no validos');
+      alert('Datos no validos');
     let id = this.formBook.controls['id'].value;
-    //console.log(id);
-  
     if(id != null && id != 0){
       this.updateBook();
     }else{
@@ -62,8 +60,8 @@ export class ModalBookComponent implements OnInit {
   addBook(){
     this.bookService.addBook(this.formBook.value).subscribe(data => {
       console.log(data);
-      alert(data.message);
-      this.dialogRef.close('Usuario creado');
+      alert("Libro creado");
+      this.dialogRef.close('Libro creado');
     }, error => {
       console.error(error);
       alert('Error al guardar');
@@ -73,7 +71,8 @@ export class ModalBookComponent implements OnInit {
   updateBook(){
     this.bookService.updateBook(this.formBook.value).subscribe(data => {
       console.log(data);
-      alert(data.message);
+      alert("Libro Actualizado");
+      this.dialogRef.close('Libro Actualizado');
     }, error => {
       console.error(error);
       alert('Error al guardar');

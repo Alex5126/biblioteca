@@ -10,7 +10,6 @@ import { JwtHelperService } from "@auth0/angular-jwt";
   providedIn: 'root'
 })
 export class AuthService {
-
   public user: RespLogin;
   private jwtHelper = new JwtHelperService();
 
@@ -46,4 +45,29 @@ export class AuthService {
     }else
       return false;
   }
+
+  returnUser(){
+    let usr:RespLogin = JSON.parse(localStorage.getItem('user') || '');
+    switch (usr.user.type) {
+      case 'ADMIN':
+        this.router.navigate(['admin']);
+        break;
+
+      case 'LIBRARIAN':
+        this.router.navigate(['librarian']);
+        break;
+  
+      case 'LECTOR':
+        this.router.navigate(['reader']);
+        break;       
+        
+      default: 
+      this.logout();
+      this.router.navigate(['login']);
+        break;
+    }
+
+  
+  }
+
 }

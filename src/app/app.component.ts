@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Tecnologico } from './models/tecnologico';
+
 
 
 @Component({

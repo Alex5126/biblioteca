@@ -11,12 +11,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalBookComponent } from './components/modal-book/modal-book.component';
 
+
 @NgModule({
   declarations: [
     UsersComponent,
     BooksComponent,
     ModalUserComponent,
-    ModalBookComponent
+    ModalBookComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +29,8 @@ import { ModalBookComponent } from './components/modal-book/modal-book.component
     MatProgressSpinnerModule
   ],
   entryComponents:[
-    ModalUserComponent
+    ModalUserComponent,
+    ModalBookComponent
   ]
 })
 export class AdminModule { }

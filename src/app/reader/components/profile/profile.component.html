@@ -1,0 +1,44 @@
+
+<div class="profile">
+    <div *ngIf="authService.user.token != '' && authService.user.user.type == 'LECTOR'" class="container">
+        <div class="card" style="margin: 10px 0;">
+            <div class="card-body">
+                Perfil de usuario 
+            </div>
+        </div>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="file" for="name">Nombre: </label><p>             
+                        <label class="file" for="last_name">Apellido: </label><p>     
+                        <label class="file" for="email">email:</label><p>   
+                        <label class="file" for="user_type">Tipo de usuario:</label><p> 
+                        <label class="file" for="password">Contraseña:</label><p> 
+                        <label class="file"for="address">Direccion:</label><p><br> 
+                        <a class="btn btn-primary"  style="margin: 1pc 0px;" (click)="openModal(users)">Editar</a>  
+                    </div>
+                    <div class="col-md-6">
+                        <label class="file_1" for="name"> {{users.name}}</label><p> 
+                        <label class="file_1" for="last_name">{{users.last_name}} </label><p> 
+   
+                        <label class="file_1" for="email">{{users.email}}</label><p>   
+                        <label class="file_1" for="user_type">{{users.type}}</label><p> 
+                            <div *ngIf ="users.password != null">
+                                <label class="file_1" for="password">********</label><p> 
+                            </div>
+                        <label class="file_1" for="address">{{users.address}}</label><p> 
+                     <mat-spinner *ngIf="users.name ==  null" style="margin: auto;" [diameter]="40"></mat-spinner>   
+                    </div> 
+                </div>
+            </div>
+                
+        </div>
+    </div>
+ 
+
+</div>
+ 
+</div>
+

@@ -26,17 +26,26 @@ export class LoginComponent implements OnInit {
       console.log('este usuario ya entro');
       let user:RespLogin = JSON.parse(localStorage.getItem('user')||'');
       switch (user.user.type) {
+        
         case 'ADMIN':
           this.router.navigate(['admin']);
           break;
-      
+
+        case 'LIBRARIAN':
+          this.router.navigate(['librarian']);
+          break;
+    
+       case 'LECTOR':
+          this.router.navigate(['reader']);
+          break;       
+          
         default: this.router.navigate(['login']);
           break;
       }
       
     }else{
       console.log('usuario sin entrar');
-      
+  
     }
   }
 
@@ -44,12 +53,20 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.formUser.value).subscribe(resp => {
       
       localStorage.setItem('user',JSON.stringify(resp));
-
+      
       this.authService.user = resp;
       switch (resp.user.type) {
         case 'ADMIN':
           this.router.navigate(['admin']);
           break;
+
+        case 'LIBRARIAN':
+          this.router.navigate(['librarian']);
+           break;
+    
+        case 'LECTOR':
+          this.router.navigate(['reader']);
+          break;                
       
         default: this.router.navigate(['login']);
           break;
@@ -57,6 +74,7 @@ export class LoginComponent implements OnInit {
       
     }, e => {
       console.error(e);
+      alert("Verifique que los datos sean correctos");
     });
   }
 

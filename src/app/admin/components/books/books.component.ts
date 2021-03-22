@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
 import { ModalBookComponent } from '../modal-book/modal-book.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-books',
@@ -13,15 +14,16 @@ export class BooksComponent implements OnInit {
 
   public displayedColumns:string[] = [ 'image', 'code', 'title', 'author', 'edition', 'description', 'opcs'];
   public books:Book[] = [];
-
   public imgTemp:any;
   public imgToUpload:any;
 
-
-  constructor(private bookService:BookService, public modalBook: MatDialog,) { }
+ 
+  constructor(private bookService:BookService, public modalBook: MatDialog, public authService:AuthService) { }
 
   ngOnInit(): void {
-    this.getBooks();
+    setTimeout(() => {
+      this.getBooks();
+     }, 200)
   }
 
   getBooks(){
@@ -30,6 +32,7 @@ export class BooksComponent implements OnInit {
     }, error => {
       console.error(error);
       alert('No se pudieron obtener los libros');
+      this.authService.logout();
     });
   }
 
@@ -38,6 +41,7 @@ export class BooksComponent implements OnInit {
     const dialogRef = this.modalBook.open(ModalBookComponent, {
       height: '550px',
       width: '800px',
+      disableClose: true,
       data: book
     });
 
@@ -51,8 +55,10 @@ export class BooksComponent implements OnInit {
     if(!confirm(`Desea eliminar ${book.title}?`)) return;
 
     this.bookService.deleteBook(book.id).subscribe(data => {
-      alert(data.message);
-      this.getBooks();
+      alert("Libro eliminado");
+      setTimeout(() => {
+        this.getBooks();
+       }, 200)
     }, error => {
       console.error(error);
       alert('No se pudo eliminar el libro');

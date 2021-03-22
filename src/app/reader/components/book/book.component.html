@@ -1,0 +1,25 @@
+
+<div *ngIf="authService.user.token != '' && authService.user.user.type == 'LECTOR'" class="container">
+    <div class="card-head" style="margin: 10px 0;">
+        <div class="card-body">
+            Libros
+        </div>
+    </div>
+    <div class="row">
+        <div *ngFor="let bok of books" class="col-md-4">
+            <div class="card">
+                <div style="text-align: center;">
+                    <img [src]="bok.image" width="200px" alt="Card image cap">
+                </div>
+                    <div class="card-body-card">
+                        <h4 class="card-title">{{bok.title}}</h4>
+                        <p class="class-text">Autor:{{bok.author}}</p>
+                        <a class="btn btn-primary" (click)="openModal(bok)">Mostrar mas</a>
+                        
+                    </div> 
+            </div>
+        </div>
+        
+    </div>
+    <mat-spinner *ngIf="books.length === 0" style="margin: auto;" [diameter]="80"></mat-spinner>
+</div>

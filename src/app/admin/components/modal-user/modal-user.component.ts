@@ -9,9 +9,10 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './modal-user.component.html',
   styleUrls: ['./modal-user.component.scss']
 })
-export class ModalUserComponent implements OnInit {
+export class ModalUserComponent implements OnInit  {
 
   public formUser: FormGroup;
+
 
   constructor(
     public dialogRef: MatDialogRef<ModalUserComponent>,
@@ -37,6 +38,7 @@ export class ModalUserComponent implements OnInit {
     }
   }
 
+
   clean(){
     this.formUser.reset();
     console.log(this.formUser.value);
@@ -48,7 +50,7 @@ export class ModalUserComponent implements OnInit {
 
   sendUser() {
     if(!this.formUser.valid) 
-      alert('datos no validos');
+      alert('Datos no validos');
     let id = this.formUser.controls['id'].value;
     console.log(id);
   
@@ -57,14 +59,13 @@ export class ModalUserComponent implements OnInit {
     }else{
       this.addUser();
     }
-
   }
 
   addUser(){
     this.userService.addUser(this.formUser.value).subscribe(data => {
       console.log(data);
-      alert(data.message);
-      this.dialogRef.close('Usuario creado');
+      alert("Usuario Creado");
+      this.dialogRef.close('Usuario Creado');
     }, error => {
       console.error(error);
       alert('Error al guardar');
@@ -74,11 +75,14 @@ export class ModalUserComponent implements OnInit {
   updateUser(){
     this.userService.updateUser(this.formUser.value).subscribe(data => {
       console.log(data);
-      alert(data.message);
+      alert("Usuario Actualizado");
+      this.dialogRef.close('Usuario Actualizado');
     }, error => {
       console.error(error);
       alert('Error al guardar');
     });
   }
+
+
 
 }
