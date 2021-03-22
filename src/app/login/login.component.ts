@@ -11,11 +11,11 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  public formUser: FormGroup;
+  public formLogin: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private authService:AuthService, private router:Router) {
 
-    this.formUser = this.formBuilder.group({
+    this.formLogin = this.formBuilder.group({
       password: [null, Validators.required],
       email: [null, Validators.required],
     });
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   send(){
-    this.authService.login(this.formUser.value).subscribe(resp => {
+    this.authService.login(this.formLogin.value).subscribe(resp => {
       
       localStorage.setItem('user',JSON.stringify(resp));
 
@@ -68,12 +68,12 @@ export class LoginComponent implements OnInit {
     }, e => {
       console.error(e);
       alert("Lo sentimos, su correo o contraseña están incorrectos. Ingrese los datos nuevamente")
-      /*this.clean();*/
+      this.clean();
     });
   }
 
-  /*clean(){
-    this.formUser.reset();
-  }*/
+  clean(){
+    this.formLogin.reset();
+  }
 
 }
