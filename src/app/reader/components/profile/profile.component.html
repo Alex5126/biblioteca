@@ -3,7 +3,7 @@
     <div *ngIf="authService.user.token != '' && authService.user.user.type == 'LECTOR'" class="container">
         <div class="card" style="margin: 10px 0;">
             <div class="card-body">
-                Perfil de usuario 
+                <h2>Perfil de usuario</h2>
             </div>
         </div>
     <div class="card">
@@ -11,12 +11,12 @@
             <div class="col-md-9">
                 <div class="row">
                     <div class="col-md-6">
-                        <label class="file" for="name">Nombre: </label><p>             
-                        <label class="file" for="last_name">Apellido: </label><p>     
-                        <label class="file" for="email">email:</label><p>   
-                        <label class="file" for="user_type">Tipo de usuario:</label><p> 
-                        <label class="file" for="password">Contraseña:</label><p> 
-                        <label class="file"for="address">Direccion:</label><p><br> 
+                        <label class="file" for="name"><b>Nombre:</b> </label><p>             
+                        <label class="file" for="last_name"><b>Apellido:</b> </label><p>     
+                        <label class="file" for="email"><b>email:</b></label><p>   
+                        <label class="file" for="user_type"><b>Tipo de usuario:</b></label><p> 
+                        <label class="file" for="password"><b>Contraseña:</b></label><p> 
+                        <label class="file"for="address"><b>Direccion:</b></label><p><br> 
                         <a class="btn btn-primary"  style="margin: 1pc 0px;" (click)="openModal(users)">Editar</a>  
                     </div>
                     <div class="col-md-6">
