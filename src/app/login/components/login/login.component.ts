@@ -17,12 +17,12 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router:Router,
-    private util:UtilsService
-  ) { 
-    if(this.authService.isAuthenticate()){
+    private router: Router,
+    private util: UtilsService
+  ) {
+    if (this.authService.isAuthenticate()) {
       this.redirecUser(util.user.type);
-    }else{
+    } else {
       this.authService.logout();
     }
 
@@ -33,30 +33,28 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   login() {
-    if(!this.formLogin.valid){
+    if (!this.formLogin.valid) {
       alert('datos invalidos');
     }
 
     this.load = true;
-    setTimeout(() => {
-      this.authService.login(this.formLogin.value).subscribe(data => {
-        localStorage.setItem('user',JSON.stringify(data));
-        this.load = false;
-        this.util.user = data.user;
-        this.redirecUser(data.user.type);
-      }, error => {
-        console.log(error.error.message);
-        alert(`Error ${error.error.message}`);
-        this.load = false;
-      });
-    }, 2000);  
+    this.authService.login(this.formLogin.value).subscribe(data => {
+      localStorage.setItem('user', JSON.stringify(data));
+      this.load = false;
+      this.util.user = data.user;
+      this.redirecUser(data.user.type);
+    }, error => {
+      console.log(error.error.message);
+      alert(`Error ${error.error.message}`);
+      this.load = false;
+    });
   }
 
-  redirecUser(type:string){
+  redirecUser(type: string) {
     switch (type) {
       case 'LECTOR': this.router.navigate(['users']);
         break;
