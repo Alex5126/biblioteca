@@ -42,17 +42,18 @@ export class LoginComponent implements OnInit {
     }
 
     this.load = true;
-      
-    this.authService.login(this.formLogin.value).subscribe(data => {
-      localStorage.setItem('user',JSON.stringify(data));
-      this.load = false;
-      this.util.user = data.user;
-      this.redirecUser(data.user.type);
-    }, error => {
-      console.log(error.error.message);
-      alert(`Error ${error.error.message}`);
-      this.load = false;
-    });
+    setTimeout(() => {
+      this.authService.login(this.formLogin.value).subscribe(data => {
+        localStorage.setItem('user',JSON.stringify(data));
+        this.load = false;
+        this.util.user = data.user;
+        this.redirecUser(data.user.type);
+      }, error => {
+        console.log(error.error.message);
+        alert(`Error ${error.error.message}`);
+        this.load = false;
+      });
+    }, 2000);  
   }
 
   redirecUser(type:string){
