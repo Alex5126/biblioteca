@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.scss']
 })
+
+
 export class BooksComponent implements OnInit {
 
   public load: boolean = true;
@@ -26,6 +29,19 @@ export class BooksComponent implements OnInit {
       image: [null, Validators.required]
     });
    }
+ 
+
+
+   /* openDialog(): void {
+      const dialogRef = this.dialog.open(bookstest.component.html);
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+    }*/
+
+
+  
 
   ngOnInit(): void {
     this.getBooks();

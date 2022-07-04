@@ -2,6 +2,9 @@
     <div class="card card-menu">
         <div *ngIf="!load" class="card-content">
             <button class="button is-success" (click)="editBook = !editBook">Agregar Libro</button>
+
+            <button mat-button (click)="editBook = !editBook">Open dialog</button>
+
             <form *ngIf="editBook" [formGroup]="formBook">
                 <div class="columns">
                     <div class="column is-one-quarter">
@@ -46,6 +49,8 @@
                     <button class="button is-primary" (click)="editBook = false">Cerrar</button>
                 </div>
             </form>
+
+            
             <br><br>
             <table class="table is-fullwidth">
                 <thead>
