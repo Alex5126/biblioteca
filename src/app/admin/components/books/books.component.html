@@ -3,7 +3,7 @@
         <div *ngIf="!load" class="card-content">
             <button class="button is-success" (click)="editBook = !editBook">Agregar Libro</button>
 
-            <button mat-button (click)="editBook = !editBook">Open dialog</button>
+            <button mat-button (click)="openDialog()">Open dialog</button>
 
             <form *ngIf="editBook" [formGroup]="formBook">
                 <div class="columns">

@@ -3,13 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import { DialogTest } from './Dialogtest';
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.scss']
 })
-
 
 export class BooksComponent implements OnInit {
 
@@ -18,7 +18,7 @@ export class BooksComponent implements OnInit {
   public formBook: FormGroup;
   public editBook: boolean = false;
 
-  constructor(private bookService: BookService, private formBuilder: FormBuilder,) {
+  constructor(private bookService: BookService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     this.formBook = this.formBuilder.group({
       id:[0],
       code: [null, Validators.required],
@@ -30,19 +30,11 @@ export class BooksComponent implements OnInit {
     });
    }
  
-
-
-   /* openDialog(): void {
-      const dialogRef = this.dialog.open(bookstest.component.html);
+    openDialog(): void {
+      const dialogRef = this.dialog.open(DialogTest);
   
-      dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
-      });
-    }*/
-
-
+    }
   
-
   ngOnInit(): void {
     this.getBooks();
   }
