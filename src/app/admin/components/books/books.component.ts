@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
+import {MatDialog, MatDialogActions } from '@angular/material/dialog';
+import { FormDialogComponent } from '../form-dialog/form-dialog.component';
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
   styleUrls: ['./books.component.scss']
 })
+
 export class BooksComponent implements OnInit {
 
   public load: boolean = true;
@@ -15,7 +18,7 @@ export class BooksComponent implements OnInit {
   public formBook: FormGroup;
   public editBook: boolean = false;
 
-  constructor(private bookService: BookService, private formBuilder: FormBuilder,) {
+  constructor(private bookService: BookService, private formBuilder: FormBuilder, public dialog: MatDialog) {
     this.formBook = this.formBuilder.group({
       id:[0],
       code: [null, Validators.required],
@@ -26,16 +29,32 @@ export class BooksComponent implements OnInit {
       image: [null, Validators.required]
     });
    }
+ 
+    openDialog(book?:any): void {
+      const dialogRef = this.dialog.open(FormDialogComponent, {
+        data: book,
+      });
 
+      dialogRef.afterClosed().subscribe(result => {
+        this.getBooks();
+      });
+    }
+  
   ngOnInit(): void {
     this.getBooks();
   }
 
   edit(book:Book){
-    this.formBook.patchValue(book);
-    console.log(this.formBook.value);
-    
-    this.editBook = true;
+    //this.formBook.patchValue(book);
+    //console.log(this.formBook.value);
+    const dialogRef = this.dialog.open(FormDialogComponent, {
+      data: {book: this.editBook},
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      book = result;
+    });
+
+    //this.editBook = true;
   }
 
   clear(){
@@ -101,5 +120,5 @@ export class BooksComponent implements OnInit {
       this.load = false;
     });
   }
-
 }
+
