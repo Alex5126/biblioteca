@@ -1,0 +1,55 @@
+<h2 *ngIf="!data" mat-dialog-title>Agregar libro</h2>
+<h2 *ngIf="data" mat-dialog-title>Editar libro</h2>
+<mat-dialog-content class="mat-typography">
+
+    <form [formGroup]="formBook">
+        <div class="columns">
+            <div *ngIf="data"class="column is-one-quarter">
+                <img [src]="formBook.controls['image'].value" alt="book" width="200px">
+            </div>
+            <div *ngIf="!data" class="column is-one-quarter">
+                <img src="https://4.bp.blogspot.com/-p3WLzI73jiU/W3F9nOfRZdI/AAAAAAAABOU/6Umu0QlXe4UZCnvE_MR2_8tJh2NWZ1jPwCLcBGAs/s1600/libro.png" alt="book" width="200px">
+            </div>
+            <div class="column">
+                <div class="column">
+                    <label for="url">Url Imagen</label>
+                    <input id="url" class="input" type="text" formControlName="image" placeholder="https://image.png">
+                </div>
+                <div class="column">
+                    <label for="code">Codigo</label>
+                    <input id="code" class="input" type="text" formControlName="code" placeholder="0123546">
+                </div>
+                <div class="column">
+                    <label for="author">Autor</label>
+                    <input id="author" class="input" type="text" formControlName="author"
+                        placeholder="Autor del Libro">
+                </div>
+            </div>
+            <div class="column">
+                <div class="column">
+                    <label for="tit">Titulo</label>
+                    <input id="tit" class="input" type="text" formControlName="title" placeholder="Titulo del libro">
+                </div>
+                <div class="column">
+                    <label for="edit">Edición</label>
+                    <input id="edit" class="input" type="text" formControlName="edition"
+                        placeholder="1ra 2da ...">
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <label for="email">Descripción</label>
+                <textarea class="textarea" placeholder="Descripcion" formControlName="description"></textarea>
+            </div>
+        </div>
+    </form>
+    
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="buttons">
+        <button class="button is-success" (click)="sendData()">Aceptar</button>
+        <button class="button is-info" (click)="clear()">Limpiar</button>
+        <button class="button is-primary" mat-dialog-close>Cerrar</button>
+    </div>
+</mat-dialog-actions>

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Book } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
-import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import { DialogTest } from './Dialogtest';
+import {MatDialog, MatDialogActions } from '@angular/material/dialog';
+import { FormDialogComponent } from '../form-dialog/form-dialog.component';
 
 @Component({
   selector: 'app-books',
@@ -30,9 +30,14 @@ export class BooksComponent implements OnInit {
     });
    }
  
-    openDialog(): void {
-      const dialogRef = this.dialog.open(DialogTest);
-  
+    openDialog(book?:any): void {
+      const dialogRef = this.dialog.open(FormDialogComponent, {
+        data: book,
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        this.getBooks();
+      });
     }
   
   ngOnInit(): void {
@@ -40,10 +45,16 @@ export class BooksComponent implements OnInit {
   }
 
   edit(book:Book){
-    this.formBook.patchValue(book);
-    console.log(this.formBook.value);
-    
-    this.editBook = true;
+    //this.formBook.patchValue(book);
+    //console.log(this.formBook.value);
+    const dialogRef = this.dialog.open(FormDialogComponent, {
+      data: {book: this.editBook},
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      book = result;
+    });
+
+    //this.editBook = true;
   }
 
   clear(){
@@ -109,5 +120,5 @@ export class BooksComponent implements OnInit {
       this.load = false;
     });
   }
-
 }
+

@@ -5,7 +5,7 @@ import { UsersComponent } from './components/users/users.component';
 import { BooksComponent} from './components/books/books.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
-import { DialogTest } from './components/books/Dialogtest';
+import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
 
 
 
@@ -13,7 +13,8 @@ import { DialogTest } from './components/books/Dialogtest';
   declarations: [
     UsersComponent,
     BooksComponent,
-    DialogTest
+    FormDialogComponent,
+    
   ],
   imports: [
     CommonModule,
